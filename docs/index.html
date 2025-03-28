@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reimagining consumption experiences through distributed taste architecture. Taco AI delivers high-velocity flavor allocation via our proprietary neural ecosystem, optimizing the intersection of culinary assets and value streams. Our platform leverages state-of-the-art algorithms to maximize sensory returns while minimizing friction in the gustatory marketplace. Experience seamless integration of taste futures with secure, transparent consumption protocols driving unprecedented liquidity in the flavor exchange ecosystem.">
+    <title>🌮 Next-gen AI-powered Taco platform!</title>
+    <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: Helvetica, Arial, 'Nimbus Sans L', sans-serif;
+          height: 100vh;
+          overflow: hidden;
+          transition: background-color 0.5s ease;
+      }
+
+      .container {
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
+          align-items: center;
+          justify-content: flex-start;
+          padding: 10px;
+          position: relative;
+      }
+
+      header {
+          text-align: center;
+          padding: 8px;
+          z-index: 10;
+          background-color: rgba(255, 255, 255, 0.7);
+          border-radius: 12px;
+          margin-bottom: 0;
+          width: 70%;
+          max-width: 500px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          position: absolute;
+          top: 10px;
+      }
+
+      h1 {
+          font-size: 1.8rem;
+          margin-bottom: 5px;
+          color: #333;
+          line-height: 1.2;
+          font-family: Helvetica, Arial, 'Nimbus Sans L', sans-serif;
+          font-weight: bold;
+          letter-spacing: -0.5px;
+      }
+
+      .tagline {
+          font-size: 1rem;
+          margin-bottom: 10px;
+          color: #555;
+          font-family: Helvetica, Arial, 'Nimbus Sans L', sans-serif;
+          font-weight: 300;
+      }
+
+      .selection-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+          margin-bottom: 8px;
+      }
+
+      .selection-btn {
+          padding: 5px 12px;
+          background-color: #ffffff;
+          border: 1px solid #333;
+          border-radius: 20px;
+          font-size: 0.9rem;
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
+          font-weight: bold;
+          font-family: Helvetica, Arial, 'Nimbus Sans L', sans-serif;
+          letter-spacing: 0.2px;
+      }
+
+      .selection-btn:hover {
+          transform: scale(1.05);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .selection-btn.active {
+          background-color: #333;
+          color: white;
+      }
+
+      .image-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 0;
+          padding-top: 80px;
+      }
+
+      .taco-image {
+          max-height: 85vh;
+          max-width: 95%;
+          object-fit: contain;
+          opacity: 0;
+          transition: opacity 0.5s ease;
+          position: absolute;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          border-radius: 20px;
+      }
+
+      .taco-image.active {
+          opacity: 1;
+          position: relative;
+      }
+
+      @media (max-width: 768px) {
+          h1 {
+              font-size: 1.4rem;
+              margin-bottom: 3px;
+              line-height: 1.2;
+          }
+
+          .tagline {
+              font-size: 0.8rem;
+              margin-bottom: 5px;
+          }
+
+          .selection-btn {
+              padding: 4px 8px;
+              font-size: 0.75rem;
+              border-width: 1px;
+          }
+
+          .taco-image {
+              max-height: 85vh;
+              max-width: 98%;
+          }
+
+          header {
+              width: 85%;
+              max-width: none;
+              padding: 6px;
+              top: 5px;
+              background-color: rgba(255, 255, 255, 0.6);
+          }
+
+          .container {
+              padding: 0;
+          }
+
+          .selection-container {
+              gap: 4px;
+              margin-bottom: 0;
+          }
+
+          .image-container {
+              padding-top: 60px;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🌮 Taco AI 🌮</h1>
+        <p class="tagline">Next-gen AI-powered Taco platform! Select your ingredient:</p>
+        <div class="selection-container">
+          <button class="selection-btn" data-option="dolls">Dolls</button>
+          <button class="selection-btn" data-option="balls">Balls</button>
+          <button class="selection-btn" data-option="kittens">Kittens</button>
+          <button class="selection-btn" data-option="puppies">Puppies</button>
+          <button class="selection-btn" data-option="money">Money</button>
+        </div>
+      </header>
+
+      <div class="image-container">
+        <img src="img/tacoai-balls.jpg" class="taco-image" id="balls-img" alt="Taco with balls">
+        <img src="img/tacoai-dolls.jpg" class="taco-image" id="dolls-img" alt="Taco with dolls">
+        <img src="img/tacoai-kittens.jpg" class="taco-image" id="kittens-img" alt="Taco with kittens">
+        <img src="img/tacoai-money.jpg" class="taco-image" id="money-img" alt="Taco with money">
+        <img src="img/tacoai-puppies.jpg" class="taco-image" id="puppies-img" alt="Taco with puppies">
+      </div>
+    </div>
+
+    <script>
+      const bgColors = {
+          'balls': '#f27823',    // orange
+          'dolls': '#52220b',    // brown
+          'kittens': '#5c7b5a',  // green
+          'money': '#6ebbb1',    // blue
+          'puppies': '#b0d588'   // green
+      };
+
+      // Image elements
+      const images = {
+          'balls': document.getElementById('balls-img'),
+          'dolls': document.getElementById('dolls-img'),
+          'kittens': document.getElementById('kittens-img'),
+          'money': document.getElementById('money-img'),
+          'puppies': document.getElementById('puppies-img')
+      };
+
+      // Selection buttons
+      const buttons = document.querySelectorAll('.selection-btn');
+
+      // Function to show selected option
+      function showOption(option) {
+          // Update background color
+          document.body.style.backgroundColor = bgColors[option];
+
+          // Hide all images
+          Object.values(images).forEach(img => {
+              img.classList.remove('active');
+          });
+
+          // Show selected image
+          images[option].classList.add('active');
+
+          // Update active button
+          buttons.forEach(btn => {
+              if (btn.dataset.option === option) {
+                  btn.classList.add('active');
+              } else {
+                  btn.classList.remove('active');
+              }
+          });
+      }
+
+      buttons.forEach(button => {
+          button.addEventListener('click', function() {
+              const option = this.dataset.option;
+              showOption(option);
+          });
+      });
+
+      // Initialize with a random option
+      window.addEventListener('DOMContentLoaded', () => {
+          const options = ['balls', 'dolls', 'kittens', 'money', 'puppies'];
+          const randomOption = options[Math.floor(Math.random() * options.length)];
+          showOption(randomOption);
+      });
+    </script>
+  </body>
+</html>
